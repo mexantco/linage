@@ -7,9 +7,9 @@
     <script data-require="jquery@3.1.1" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body>
-    <div id="accselX" class="accsel">1</div>
-    <div id="accselY" class="accsel">2</div>
-    <div id="accselZ" class="accsel">3</div>
+    <div id="accselX" style="left:10px" class="accsel">1</div>
+    <div id="accselY" style="left:50px" class="accsel">2</div>
+    <div id="accselZ" style="left:100px" class="accsel">3</div>
    <div class="wrapper">
     <img src="social.png" alt="" id="social">
     <img src="flag.png" alt="" id="flag">
@@ -147,7 +147,7 @@ $(document).mousemove(function(event){
 </script>
 
 <style>
-.accsel {z-index: 20; height: 50px;width: 100px; position: relative; color:black; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;}
+.accsel {z-index: 20; height: 50px;width: 100px; position: absolute; color:white; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;}
 @keyframes glow{
 
 0% {opacity: 0.3;}
