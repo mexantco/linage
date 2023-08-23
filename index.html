@@ -124,8 +124,8 @@ window.addEventListener('deviceorientation', function(event) {
     var x = event.alpha;
   var y = event.beta;
   var z = event.gamma;
-  $(".paralaks_content").css('transition','perspective-origin 0.3s')
-  $(".paralaks_content").css('perspective-origin', (8*z+60)+'px '+(31*y+60)+'px');
+//   $(".paralaks_content").css('transition','perspective-origin 0.3s')
+  $(".paralaks_content").css('perspective-origin', (8*z+60)+'px '+(13*y+1100)+'px');
 
   
   $('#accselY').text(Math.floor(event.beta)+'____'+$(".paralaks_content").css('perspective-origin'));
