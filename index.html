@@ -125,7 +125,7 @@ window.addEventListener('deviceorientation', function(event) {
   var y = event.beta;
   var z = event.gamma;
 //   $(".paralaks_content").css('transition','perspective-origin 0.3s')
-  $(".paralaks_content").css('perspective-origin', (8*z+60)+'px '+(-13*y+1100)+'px');
+  $(".paralaks_content").css('perspective-origin', (-13*y+1100)+'px');
 
   
   $('#accselY').text(Math.floor(event.beta)+'____'+$(".paralaks_content").css('perspective-origin'));
@@ -422,7 +422,7 @@ color: white;
     .paralaks_content {
         /* transition: perspective-origin 0.5s ease-out; */
         transform-style: preserve-3d;
-         perspective: 100px;
+         perspective: 160px;
          height: 100%;
          perspective-origin: 0px 0px;
         }
