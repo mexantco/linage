@@ -112,37 +112,38 @@
 
 <script>   
 var iteration = 0;
-window.addEventListener('devicemotion', function(event) {
-    iteration++;
-  
-if(iteration==10){
-    var x = event.acceleration.x;
-  var y = event.acceleration.y;
-  var z = event.acceleration.z;
-$(".paralaks_content").css('transition','perspective-origin 0.5s ease-out')
-  $(".paralaks_content").css('perspective-origin', (100*x)+'px '+(500*y)+'px');
-//   <-400?-400:((20*y)>1100?1100:(20*y))
-iteration=0;
-  
-  $('#accselX').text('X='+x.toFixed(1));
-  $('#accselY').text('Y='+y.toFixed(1));
-  $('#accselZ').text('Z='+z.toFixed(1));
-}}
-);
-
-// window.addEventListener('deviceorientation', function(event) {
+// window.addEventListener('devicemotion', function(event) {
 //     iteration++;
-//     if(iteration==10){
-//     var x = event.alpha;
-//   var y = event.beta;
-//   var z = event.gamma;
+  
+// if(iteration==10){
+//     var x = event.acceleration.x;
+//   var y = event.acceleration.y;
+//   var z = event.acceleration.z;
 // $(".paralaks_content").css('transition','perspective-origin 0.5s ease-out')
-//   $(".paralaks_content").css('perspective-origin', (-66.6*z)+'px '+(-13*y+1100)+'px');
+//   $(".paralaks_content").css('perspective-origin', (100*x)+'px '+(500*y)+'px');
+// //   <-400?-400:((20*y)>1100?1100:(20*y))
 // iteration=0;
-//   }
-//   $('#accselY').text(Math.floor(event.beta)+'____'+$(".paralaks_content").css('perspective-origin'));
-//   $('#accselZ').text(Math.floor(event.gamma));
-// });
+  
+//   $('#accselX').text('X='+x.toFixed(1));
+//   $('#accselY').text('Y='+y.toFixed(1));
+//   $('#accselZ').text('Z='+z.toFixed(1));
+// }}
+// );
+
+window.addEventListener('deviceorientation', function(event) {
+    iteration++;
+    if(iteration==10){
+    var x = event.alpha;
+  var y = event.beta;
+  var z = event.gamma;
+$(".paralaks_content").css('transition','perspective-origin 0.5s ease-out')
+  $(".paralaks_content").css('perspective-origin', (-66.6*z)+'px '+(-13*y+1100)+'px');
+iteration=0;
+  }
+  $('#accselX').text(Math.floor(event.alpha));
+  $('#accselY').text(Math.floor(event.beta));
+  $('#accselZ').text(Math.floor(event.gamma));
+});
 $(document).mousemove(function(event){
     var mouseX = event.pageX;
     var mouseY = event.pageY;
