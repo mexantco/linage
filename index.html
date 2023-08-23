@@ -111,29 +111,36 @@
 </body>
 
 <script>   
-// window.addEventListener('devicemotion', function(event) {
-//   var x = event.acceleration.x.toFixed(1);
-//   var y = event.acceleration.y.toFixed(1);
-//   var z = event.acceleration.z.toFixed(1);
-//   $(".paralaks_content").css('perspective-origin', Math.abs(z*100)+'px '+(y*100)+'px');
-//   $('#accselX').text(event.acceleration.x.toFixed(1));
-//   $('#accselY').text(event.acceleration.y.toFixed(1));
-//   $('#accselZ').text(event.acceleration.z.toFixed(1));
-// });
 var iteration = 0;
-window.addEventListener('deviceorientation', function(event) {
-    iteration++;
-    if(iteration==10){
-    var x = event.alpha;
-  var y = event.beta;
-  var z = event.gamma;
+window.addEventListener('devicemotion', function(event) {
+  var x = event.acceleration.x.toFixed(1);
+  var y = event.acceleration.y.toFixed(1);
+  var z = event.acceleration.z.toFixed(1);
+if(iteration==10){
+    
 $(".paralaks_content").css('transition','perspective-origin 0.5s ease-out')
-  $(".paralaks_content").css('perspective-origin', (-66.6*z)+'px '+(-13*y+1100)+'px');
+  $(".paralaks_content").css('perspective-origin', (10*x)+'px '+(20*y)<-400?-400:((20*y)>1100?1100:(20*y))+'px');
 iteration=0;
-  }
-  $('#accselY').text(Math.floor(event.beta)+'____'+$(".paralaks_content").css('perspective-origin'));
-  $('#accselZ').text(Math.floor(event.gamma));
-});
+  $(".paralaks_content").css('perspective-origin', Math.abs(z*100)+'px '+(y*100)+'px');
+  $('#accselX').text(event.acceleration.x.toFixed(1));
+  $('#accselY').text(event.acceleration.y.toFixed(1));
+  $('#accselZ').text(event.acceleration.z.toFixed(1));
+}}
+);
+
+// window.addEventListener('deviceorientation', function(event) {
+//     iteration++;
+//     if(iteration==10){
+//     var x = event.alpha;
+//   var y = event.beta;
+//   var z = event.gamma;
+// $(".paralaks_content").css('transition','perspective-origin 0.5s ease-out')
+//   $(".paralaks_content").css('perspective-origin', (-66.6*z)+'px '+(-13*y+1100)+'px');
+// iteration=0;
+//   }
+//   $('#accselY').text(Math.floor(event.beta)+'____'+$(".paralaks_content").css('perspective-origin'));
+//   $('#accselZ').text(Math.floor(event.gamma));
+// });
 $(document).mousemove(function(event){
     var mouseX = event.pageX;
     var mouseY = event.pageY;
