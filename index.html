@@ -113,9 +113,9 @@
 <script>   
 window.addEventListener('devicemotion', function(event) {
   
-  $('#accselX').text(event.accelerationIncludingGravity.x);
-  $('#accselY').text(event.accelerationIncludingGravity.y);
-  $('#accselZ').text(event.accelerationIncludingGravity.z);
+  $('#accselX').text(Math.floor(event.acceleration.x));
+  $('#accselY').text(Math.floor(event.acceleration.y));
+  $('#accselZ').text(Math.floor(event.acceleration.z));
 });
 // window.addEventListener('deviceorientation', function(event) {
   
