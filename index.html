@@ -128,8 +128,8 @@ window.addEventListener('deviceorientation', function(event) {
   $(".paralaks_content").css('perspective-origin', (z*10)+'px '+(y*10)+'px');
 
   
-  $('#accselY').text(event.beta+'____'+$(".paralaks_content").css('perspective-origin'));
-  $('#accselZ').text(event.gamma);
+  $('#accselY').text(Math.floor(event.beta)+'____'+$(".paralaks_content").css('perspective-origin'));
+  $('#accselZ').text(Math.floor(event.gamma));
 });
 $(document).mousemove(function(event){
     var mouseX = event.pageX;
