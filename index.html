@@ -122,7 +122,7 @@ if(iteration==10){
 $(".paralaks_content").css('transition','perspective-origin 0.5s ease-out')
   $(".paralaks_content").css('perspective-origin', (10*x)+'px '+(20*y)<-400?-400:((20*y)>1100?1100:(20*y))+'px');
 iteration=0;
-  $(".paralaks_content").css('perspective-origin', Math.abs(z*100)+'px '+(y*100)+'px');
+  
   $('#accselX').text('X='+event.acceleration.x.toFixed(1));
   $('#accselY').text('Y='+event.acceleration.y.toFixed(1));
   $('#accselZ').text('Z='+event.acceleration.z.toFixed(1));
