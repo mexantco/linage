@@ -120,14 +120,17 @@
 //   $('#accselY').text(event.acceleration.y.toFixed(1));
 //   $('#accselZ').text(event.acceleration.z.toFixed(1));
 // });
+var iteration = 0;
 window.addEventListener('deviceorientation', function(event) {
+    iteration++;
+    if(iteration==10){
     var x = event.alpha;
   var y = event.beta;
   var z = event.gamma;
 //   $(".paralaks_content").css('transition','perspective-origin 0.3s')
   $(".paralaks_content").css('perspective-origin', (-13*y+1100)+'px');
-
-  
+iteration=0;
+  }
   $('#accselY').text(Math.floor(event.beta)+'____'+$(".paralaks_content").css('perspective-origin'));
   $('#accselZ').text(Math.floor(event.gamma));
 });
