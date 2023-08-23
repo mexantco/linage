@@ -111,21 +111,24 @@
 </body>
 
 <script>   
-window.addEventListener('devicemotion', function(event) {
-  var x = event.acceleration.x.toFixed(1);
-  var y = event.acceleration.y.toFixed(1);
-  var z = event.acceleration.z.toFixed(1);
-  $(".paralaks_content").css('perspective-origin', Math.abs(z*100)+'px '+(y*100)+'px');
-  $('#accselX').text(event.acceleration.x.toFixed(1));
-  $('#accselY').text(event.acceleration.y.toFixed(1));
-  $('#accselZ').text(event.acceleration.z.toFixed(1));
-});
-// window.addEventListener('deviceorientation', function(event) {
-  
-//   $('#accselX').text(event.alpha);
-//   $('#accselY').text(event.beta);
-//   $('#accselZ').text(event.gamma);
+// window.addEventListener('devicemotion', function(event) {
+//   var x = event.acceleration.x.toFixed(1);
+//   var y = event.acceleration.y.toFixed(1);
+//   var z = event.acceleration.z.toFixed(1);
+//   $(".paralaks_content").css('perspective-origin', Math.abs(z*100)+'px '+(y*100)+'px');
+//   $('#accselX').text(event.acceleration.x.toFixed(1));
+//   $('#accselY').text(event.acceleration.y.toFixed(1));
+//   $('#accselZ').text(event.acceleration.z.toFixed(1));
 // });
+window.addEventListener('deviceorientation', function(event) {
+    var x = event.alpha;
+  var y = event.beta;
+  var z = event.gamma;
+  $(".paralaks_content").css('perspective-origin', Math.abs(z*100)+'px '+(y*100)+'px');
+  $('#accselX').text(event.alpha);
+  $('#accselY').text(event.beta);
+  $('#accselZ').text(event.gamma);
+});
 $(document).mousemove(function(event){
     var mouseX = event.pageX;
     var mouseY = event.pageY;
