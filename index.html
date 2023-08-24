@@ -35,7 +35,7 @@
         <div class="paralaks_content">
             <!-- <div class="paralaks_content_back"></div> -->
             <!-- <img class="paralacks_background" src="background.png"> -->
-            <video src="/assets/video/videoback.mp4" class="paralacks_background"></video>
+            <video src="/assets/video/videoback.mp4" class="paralacks_background" autoplay="autoplay" controls loop>hbjhgjh</video>
             <img id="sm_lf_bt" src="smoke_left_bottom.png" alt="">
             <img id="sm_rg_bt" src="smoke_right_bottom.png" alt="">
             <img id="sm_lf_tp" src="smoke_left_top.png" alt="">
@@ -117,32 +117,32 @@ var x=0;
 var y=0;
 var z=0;
 var iteration = 0;
-window.addEventListener('devicemotion', function(event) {
-    // iteration++;
+// window.addEventListener('devicemotion', function(event) {
+//     // iteration++;
   
-// if(iteration==10){
-    if(Math.abs(event.accelerationIncludingGravity.x-x)>0.5){x = event.accelerationIncludingGravity.x;}
-    if(Math.abs(event.accelerationIncludingGravity.y-y)>0.5){
-        switch(true){
-        case (220*event.accelerationIncludingGravity.y-1100)>1090: perOrigY =1090; break;
-        case (220*event.accelerationIncludingGravity.y-1100)<-400: perOrigY = -400; break;
-        case (220*event.accelerationIncludingGravity.y-1100)>=-400&&(220*event.accelerationIncludingGravity.y-1100)<=1090: perOrigY = 220*event.accelerationIncludingGravity.y-1100; break;
-            }
-        }
-    if(Math.abs(event.accelerationIncludingGravity.z-z)>0.5){z = event.accelerationIncludingGravity.z;}
+// // if(iteration==10){
+//     if(Math.abs(event.accelerationIncludingGravity.x-x)>0.5){x = event.accelerationIncludingGravity.x;}
+//     if(Math.abs(event.accelerationIncludingGravity.y-y)>0.5){
+//         switch(true){
+//         case (220*event.accelerationIncludingGravity.y-1100)>1090: perOrigY =1090; break;
+//         case (220*event.accelerationIncludingGravity.y-1100)<-400: perOrigY = -400; break;
+//         case (220*event.accelerationIncludingGravity.y-1100)>=-400&&(220*event.accelerationIncludingGravity.y-1100)<=1090: perOrigY = 220*event.accelerationIncludingGravity.y-1100; break;
+//             }
+//         }
+//     if(Math.abs(event.accelerationIncludingGravity.z-z)>0.5){z = event.accelerationIncludingGravity.z;}
    
     
-$(".paralaks_content").css('transition','perspective-origin 0.7s ease-out');
-  $(".paralaks_content").css('perspective-origin', (-500*x)+'px '+perOrigY+'px');
-//   <-400?-400:((20*y)>1100?1100:(20*y))
-// iteration=0;
+// $(".paralaks_content").css('transition','perspective-origin 0.7s ease-out');
+//   $(".paralaks_content").css('perspective-origin', (-500*x)+'px '+perOrigY+'px');
+
+
   
-  $('#accselX').text('X='+x.toFixed(1));
-  $('#accselY').text('Y='+y.toFixed(1));
-  $('#accselZ').text('Z='+$(".paralaks_content").css('perspective-origin'));
-}
+//   $('#accselX').text('X='+x.toFixed(1));
+//   $('#accselY').text('Y='+y.toFixed(1));
+//   $('#accselZ').text('Z='+$(".paralaks_content").css('perspective-origin'));
 // }
-);
+
+// );
 // navigator.permissions.query({ name: "accelerometer" });
 // GS.addEventListener("reading", e=>{
 //     $('#accselX').text(GS.x);
@@ -163,21 +163,21 @@ $(".paralaks_content").css('transition','perspective-origin 0.7s ease-out');
 //   $('#accselY').text(Math.floor(event.beta));
 //   $('#accselZ').text(Math.floor(event.gamma));
 // });
-// $(document).mousemove(function(event){
-//     var mouseX = event.pageX;
-//     var mouseY = event.pageY;
+$(document).mousemove(function(event){
+    var mouseX = event.pageX;
+    var mouseY = event.pageY;
     
-//     $(".paralaks_content").css('perspective-origin', (event.pageX/3)+'px '+(event.pageY/4)+'px');
-//     // $(".paralaks_content").css("transform", 'rotateX('+(2000-mouseY)/100+'deg)');
-//     // $(".paralaks_content").css("transform", 'rotateY('+(1000-mouseX)/100+'deg)');
-//     $('.elipse3').css('transform', 'translateY('+(1000-mouseX)/1800+'vh)')
-//     $('.elipse5').css('transform', 'translateY('+(1000-mouseX)/1800*-1+'vh)')
-//     $('.elipse1, .elipse2').css('transform', 'translateX('+(1000-mouseX)/2000*-1+'vw)');
-//     $('.elipse6, .elipse4').css('transform', 'translateX('+(1000-mouseX)/2000*1+'vw) rotate(90deg)');
+    $(".paralaks_content").css('perspective-origin', (event.pageX/3)+'px '+(event.pageY/4)+'px');
+    // $(".paralaks_content").css("transform", 'rotateX('+(2000-mouseY)/100+'deg)');
+    // $(".paralaks_content").css("transform", 'rotateY('+(1000-mouseX)/100+'deg)');
+    $('.elipse3').css('transform', 'translateY('+(1000-mouseX)/1800+'vh)')
+    $('.elipse5').css('transform', 'translateY('+(1000-mouseX)/1800*-1+'vh)')
+    $('.elipse1, .elipse2').css('transform', 'translateX('+(1000-mouseX)/2000*-1+'vw)');
+    $('.elipse6, .elipse4').css('transform', 'translateX('+(1000-mouseX)/2000*1+'vw) rotate(90deg)');
     
-//     console.log('mouse '+ mouseX);
-//     console.log('rot '+ mouseY/2000);
-// }); 
+    console.log('mouse '+ mouseX);
+    console.log('rot '+ mouseY/2000);
+}); 
 </script>
 
 <style>
