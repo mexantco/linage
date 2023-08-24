@@ -111,7 +111,7 @@
 </body>
 
 <script>   
-var GS = new GravitySensor({frequency: 60});
+
 var x=0;
 var y=0;
 var z=0;
@@ -121,8 +121,8 @@ window.addEventListener('devicemotion', function(event) {
   
 // if(iteration==10){
     if(Math.abs(event.accelerationIncludingGravity.x-x)>0.5){x = event.accelerationIncludingGravity.x;}
-    if(Math.abs(event.accelerationIncludingGravity.y-y)>0.5){y = event.accelerationIncludingGravity.x;}
-    if(Math.abs(event.accelerationIncludingGravity.z-z)>0.5){z = event.accelerationIncludingGravity.x;}
+    if(Math.abs(event.accelerationIncludingGravity.y-y)>0.5){y = event.accelerationIncludingGravity.y;}
+    if(Math.abs(event.accelerationIncludingGravity.z-z)>0.5){z = event.accelerationIncludingGravity.z;}
    
    
 $(".paralaks_content").css('transition','perspective-origin 0.5s ease-out');
