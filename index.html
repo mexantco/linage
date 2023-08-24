@@ -131,7 +131,7 @@ var iteration = 0;
 //   $('#accselZ').text('Z='+z.toFixed(1));
 // }}
 // );
-
+navigator.permissions.query({ name: "accelerometer" })
 GS.addEventListener("reading", e=>{
     $('#accselX').text(GS.x);
   $('#accselY').text(GS.y);
