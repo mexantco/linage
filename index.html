@@ -123,9 +123,9 @@ window.addEventListener('devicemotion', function(event) {
     if(Math.abs(event.accelerationIncludingGravity.x-x)>0.5){x = event.accelerationIncludingGravity.x;}
     if(Math.abs(event.accelerationIncludingGravity.y-y)>0.5){
         switch(true){
-        case event.accelerationIncludingGravity.y>1090: y=1090; break;
-        case event.accelerationIncludingGravity.y<-400: y=-400; break;
-        case event.accelerationIncludingGravity.y>=-400&&event.accelerationIncludingGravity.y<=1090: y=event.accelerationIncludingGravity.y; break;
+        case (220*event.accelerationIncludingGravity.y-1100)>1090: y=1090; break;
+        case (220*event.accelerationIncludingGravity.y-1100)<-400: y=-400; break;
+        case (220*event.accelerationIncludingGravity.y-1100)>=-400&&(220*event.accelerationIncludingGravity.y-1100)<=1090: y=event.accelerationIncludingGravity.y; break;
             }
         }
     if(Math.abs(event.accelerationIncludingGravity.z-z)>0.5){z = event.accelerationIncludingGravity.z;}
