@@ -9,7 +9,7 @@
 <body>
     <div id="accselX" style="left:50px" class="accsel">1</div>
     <div id="accselY" style="left:140px" class="accsel">2</div>
-    <div id="accselZ" style="left:300px" class="accsel">3</div>
+    <div id="accselZ" style="left:250px" class="accsel">3</div>
    <div class="wrapper">
     <img src="social.png" alt="" id="social">
     <img src="flag.png" alt="" id="flag">
@@ -132,7 +132,7 @@ $(".paralaks_content").css('transition','perspective-origin 0.5s ease-out');
   
   $('#accselX').text('X='+x.toFixed(1));
   $('#accselY').text('Y='+y.toFixed(1));
-  $('#accselZ').text('Z='+z.toFixed(1));
+  $('#accselZ').text('Z='+$(".paralaks_content").css('perspective-origin'));
 }
 // }
 );
