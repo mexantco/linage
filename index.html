@@ -115,21 +115,22 @@ var GS = new GravitySensor({frequency: 60});
 
 var iteration = 0;
 window.addEventListener('devicemotion', function(event) {
-    iteration++;
+    // iteration++;
   
-if(iteration==10){
+// if(iteration==10){
     let x = event.accelerationIncludingGravity.x;
   let y = event.accelerationIncludingGravity.y;
   let z = event.accelerationIncludingGravity.z;
 $(".paralaks_content").css('transition','perspective-origin 0.5s ease-out');
   $(".paralaks_content").css('perspective-origin', (-500*x)+'px '+(160*y-500)+'px');
 //   <-400?-400:((20*y)>1100?1100:(20*y))
-iteration=0;
+// iteration=0;
   
   $('#accselX').text('X='+x.toFixed(1));
   $('#accselY').text('Y='+y.toFixed(1));
   $('#accselZ').text('Z='+z.toFixed(1));
-}}
+}
+// }
 );
 // navigator.permissions.query({ name: "accelerometer" });
 // GS.addEventListener("reading", e=>{
