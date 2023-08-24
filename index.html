@@ -118,9 +118,9 @@ window.addEventListener('devicemotion', function(event) {
     iteration++;
   
 if(iteration==10){
-    var x = event.accelerationIncludingGravity.x;
-  var y = event.accelerationIncludingGravity.y;
-  var z = event.accelerationIncludingGravity.z;
+    let x = event.accelerationIncludingGravity.x;
+  let y = event.accelerationIncludingGravity.y;
+  let z = event.accelerationIncludingGravity.z;
 $(".paralaks_content").css('transition','perspective-origin 0.5s ease-out');
   $(".paralaks_content").css('perspective-origin', (10*x)+'px '+(10*y)+'px');
 //   <-400?-400:((20*y)>1100?1100:(20*y))
