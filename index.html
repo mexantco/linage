@@ -111,6 +111,8 @@
 </body>
 
 <script>   
+var GS = new GravitySensor({frequency: 60});
+
 var iteration = 0;
 // window.addEventListener('devicemotion', function(event) {
 //     iteration++;
@@ -130,35 +132,40 @@ var iteration = 0;
 // }}
 // );
 
-window.addEventListener('deviceorientation', function(event) {
-    iteration++;
-    if(iteration==10){
-    var x = event.alpha;
-  var y = event.beta;
-  var z = event.gamma;
-$(".paralaks_content").css('transition','perspective-origin 0.5s ease-out')
-  $(".paralaks_content").css('perspective-origin', (-66.6*x)+'px '+(-13*y+1100)+'px');
-iteration=0;
-  }
-  $('#accselX').text(Math.floor(event.alpha));
-  $('#accselY').text(Math.floor(event.beta));
-  $('#accselZ').text(Math.floor(event.gamma));
-});
-$(document).mousemove(function(event){
-    var mouseX = event.pageX;
-    var mouseY = event.pageY;
+GS.addEventListener("reading", e=>{
+    $('#accselX').text(GS.x);
+  $('#accselY').text(GS.y);
+  $('#accselZ').text(GS.z);
+})
+// window.addEventListener('deviceorientation', function(event) {
+//     iteration++;
+//     if(iteration==10){
+//     var x = event.alpha;
+//   var y = event.beta;
+//   var z = event.gamma;
+// $(".paralaks_content").css('transition','perspective-origin 0.5s ease-out')
+//   $(".paralaks_content").css('perspective-origin', (-66.6*x)+'px '+(-13*y+1100)+'px');
+// iteration=0;
+//   }
+//   $('#accselX').text(Math.floor(event.alpha));
+//   $('#accselY').text(Math.floor(event.beta));
+//   $('#accselZ').text(Math.floor(event.gamma));
+// });
+// $(document).mousemove(function(event){
+//     var mouseX = event.pageX;
+//     var mouseY = event.pageY;
     
-    $(".paralaks_content").css('perspective-origin', (event.pageX/3)+'px '+(event.pageY/4)+'px');
-    // $(".paralaks_content").css("transform", 'rotateX('+(2000-mouseY)/100+'deg)');
-    // $(".paralaks_content").css("transform", 'rotateY('+(1000-mouseX)/100+'deg)');
-    $('.elipse3').css('transform', 'translateY('+(1000-mouseX)/1800+'vh)')
-    $('.elipse5').css('transform', 'translateY('+(1000-mouseX)/1800*-1+'vh)')
-    $('.elipse1, .elipse2').css('transform', 'translateX('+(1000-mouseX)/2000*-1+'vw)');
-    $('.elipse6, .elipse4').css('transform', 'translateX('+(1000-mouseX)/2000*1+'vw) rotate(90deg)');
+//     $(".paralaks_content").css('perspective-origin', (event.pageX/3)+'px '+(event.pageY/4)+'px');
+//     // $(".paralaks_content").css("transform", 'rotateX('+(2000-mouseY)/100+'deg)');
+//     // $(".paralaks_content").css("transform", 'rotateY('+(1000-mouseX)/100+'deg)');
+//     $('.elipse3').css('transform', 'translateY('+(1000-mouseX)/1800+'vh)')
+//     $('.elipse5').css('transform', 'translateY('+(1000-mouseX)/1800*-1+'vh)')
+//     $('.elipse1, .elipse2').css('transform', 'translateX('+(1000-mouseX)/2000*-1+'vw)');
+//     $('.elipse6, .elipse4').css('transform', 'translateX('+(1000-mouseX)/2000*1+'vw) rotate(90deg)');
     
-    console.log('mouse '+ mouseX);
-    console.log('rot '+ mouseY/2000);
-}); 
+//     console.log('mouse '+ mouseX);
+//     console.log('rot '+ mouseY/2000);
+// }); 
 </script>
 
 <style>
