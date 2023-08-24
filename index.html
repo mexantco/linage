@@ -34,7 +34,8 @@
         
         <div class="paralaks_content">
             <!-- <div class="paralaks_content_back"></div> -->
-            <img class="paralacks_background" src="background.png">
+            <!-- <img class="paralacks_background" src="background.png"> -->
+            <video src="assets/video/videoback.mp4" class="paralacks_background"></video>
             <img id="sm_lf_bt" src="smoke_left_bottom.png" alt="">
             <img id="sm_rg_bt" src="smoke_right_bottom.png" alt="">
             <img id="sm_lf_tp" src="smoke_left_top.png" alt="">
@@ -123,16 +124,16 @@ window.addEventListener('devicemotion', function(event) {
     if(Math.abs(event.accelerationIncludingGravity.x-x)>0.5){x = event.accelerationIncludingGravity.x;}
     if(Math.abs(event.accelerationIncludingGravity.y-y)>0.5){
         switch(true){
-        case (220*event.accelerationIncludingGravity.y-1100)>1090: y=1090; break;
-        case (220*event.accelerationIncludingGravity.y-1100)<-400: y=-400; break;
-        case (220*event.accelerationIncludingGravity.y-1100)>=-400&&(220*event.accelerationIncludingGravity.y-1100)<=1090: y=event.accelerationIncludingGravity.y; break;
+        case (220*event.accelerationIncludingGravity.y-1100)>1090: perOrigY =1090; break;
+        case (220*event.accelerationIncludingGravity.y-1100)<-400: perOrigY = -400; break;
+        case (220*event.accelerationIncludingGravity.y-1100)>=-400&&(220*event.accelerationIncludingGravity.y-1100)<=1090: perOrigY = 220*event.accelerationIncludingGravity.y-1100; break;
             }
         }
     if(Math.abs(event.accelerationIncludingGravity.z-z)>0.5){z = event.accelerationIncludingGravity.z;}
    
-   
+    
 $(".paralaks_content").css('transition','perspective-origin 0.7s ease-out');
-  $(".paralaks_content").css('perspective-origin', (-500*x)+'px '+(220*y-1100)+'px');
+  $(".paralaks_content").css('perspective-origin', (-500*x)+'px '+perOrigY+'px');
 //   <-400?-400:((20*y)>1100?1100:(20*y))
 // iteration=0;
   
