@@ -35,15 +35,18 @@
         <div class="paralaks_content">
             <!-- <div class="paralaks_content_back"></div> -->
             <!-- <img class="paralacks_background" src="background.png"> -->
-            <video src="/assets/video/videoback.mp4" class="paralacks_background" autoplay="autoplay" controls loop>hbjhgjh</video>
+            <video style="opacity: 0.8;" src="/assets/video/videoback.mp4" id="videoback" class="paralacks_background" controls="true" autoplay="autoplay" loop="true" muted defaultmuted playsinline >hbjhgjh</video>
             <img id="sm_lf_bt" src="smoke_left_bottom.png" alt="">
             <img id="sm_rg_bt" src="smoke_right_bottom.png" alt="">
             <img id="sm_lf_tp" src="smoke_left_top.png" alt="">
             <img id="sm_onlogo" src="smoke_onlogo.png" alt="">
             <img id="sm_und" src="smoke_undertext.png" alt="">
-            <img class="logo" src="logo.png" alt="">
+            <img class="logo" id="logo" src="logo.png" alt="">
             <img class="logo" style="filter: blur(4px);z-index: -2;" src="logo.png" alt="">
+            <div class="logo wink"  >ssss</div>
             <div id="header">ПЕРВЫЙ INTERLUDE + НА КЛИЕНТЕ CLASSIC</div>
+            <!-- <img id="" src="background.png" class="paralacks_foreground"alt=""> -->
+            <video src="assets/video/videoback2.mp4" alt="" controls="true" autoplay="autoplay" class="paralacks_foreground" loop="true" muted defaultmuted playsinline ></video>
         <div id="loginbtn">
             <img src="line1.png" alt="" class="line" id="line1">
             <img src="line1.png" alt="" class="line" id="line2">
@@ -166,10 +169,10 @@ var iteration = 0;
 $(document).mousemove(function(event){
     var mouseX = event.pageX;
     var mouseY = event.pageY;
-    
+    document.getElementById('videoback').play();
     $(".paralaks_content").css('perspective-origin', (event.pageX/3)+'px '+(event.pageY/4)+'px');
-    // $(".paralaks_content").css("transform", 'rotateX('+(2000-mouseY)/100+'deg)');
-    // $(".paralaks_content").css("transform", 'rotateY('+(1000-mouseX)/100+'deg)');
+    $(".paralaks_content").css("transform", 'rotateX('+(2000-mouseY)/100+'deg)');
+    $(".paralaks_content").css("transform", 'rotateY('+(1000-mouseX)/100+'deg)');
     $('.elipse3').css('transform', 'translateY('+(1000-mouseX)/1800+'vh)')
     $('.elipse5').css('transform', 'translateY('+(1000-mouseX)/1800*-1+'vh)')
     $('.elipse1, .elipse2').css('transform', 'translateX('+(1000-mouseX)/2000*-1+'vw)');
@@ -181,7 +184,11 @@ $(document).mousemove(function(event){
 </script>
 
 <style>
-.accsel {z-index: 20; position: absolute; color:white; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;}
+    .paralacks_foreground{
+        mix-blend-mode: lighten;
+    transform: translate3d(0, 0, 15px);
+    }
+.accsel {display: none; z-index: 20; position: absolute; color:white; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;}
 @keyframes glow{
 
 0% {opacity: 0.3;}
@@ -239,7 +246,12 @@ $(document).mousemove(function(event){
 
 }
 
-
+  @keyframes rotation {
+    0%{transform: rotate(0deg);}
+    
+    100%{transform: rotate(360deg);}
+    
+  }
     @font-face {
   font-family: "Femme Fatale";
   font-style: normal;
@@ -304,7 +316,7 @@ color: white;
      #flag {
         position: absolute;
         width: 10vw;
-    right: 8vw;
+    right: 3vw;
      }
      #menubody{
         gap: 4vh;
@@ -318,10 +330,10 @@ color: white;
     flex-direction: column;
      }
     #playbtn, #playglow{
-        width: 20vw;
+        width: 10vw;
     position: absolute;
-    right: 5vw;
-    bottom: 5vw;
+    right: 3vw;
+    bottom: 2vw;
      }
      #playglow{
         width: 18vw;
@@ -329,16 +341,20 @@ color: white;
         animation-duration: 4s;
 	animation-name: glow;
 	animation-iteration-count: infinite;
-
+    right: 0.5vw;
+    bottom: 0.5vw;
      }
      #playicon{
         width: 14vw;
         position: absolute;
-    right: 5.7vw;
-    bottom: 5vw;
+    right: 0.5vw;
+    bottom: 0vw;
     
      }
-    
+    #playbtn {
+        animation: rotation 20s infinite linear;
+        
+    }
     .line {
         position: absolute;
     left: -2vw;
@@ -364,10 +380,10 @@ color: white;
     display: flex;
     justify-content: center;
     align-items: center;
-    top: 70vh;
+    top: 60vh;
     left: 0; right: 0; bottom: 0;
     margin: auto;
-    transform:  translate3d(0px, 20px, 2px);
+    transform:  translate3d(0px, 0px, 10px);
     z-index: 2;
      }
     #loginbtn2:hover {
@@ -431,7 +447,7 @@ color: white;
         height: 100vh;
         overflow-y: hidden;
         margin: 0;
-        
+        background: black;
         font-family: 'Femme Fatale', sans-serif;
 
     }
@@ -466,21 +482,48 @@ color: white;
     #sm_rg_bt {transform: translate3d(700px, 300px, 15px);height: 100%;}
     #sm_lf_tp {transform: translate3d(-700px, -300px, -21px);height: 100%;}
     #sm_onlogo {transform: translate3d(-700px, -300px, 15px);height: 100%;}
-    #sm_und {transform: translate3d(0px, 20px, -5px);}
-    .logo {transform: translate3d(0px, 20px, 2px); width: 60vw;}
+    #sm_und {transform: translate3d(0px, 20px, -5px);
+    mix-blend-mode: multiply;
+    opacity: 0.7;
+    }
+    .logo {transform: translate3d(0px, 0px, 10px); 
+        width: 60vw;
+    top:-10vh;}
+    @keyframes wink {
+        0%{background-position-x: -800px;}
+        30%{background-position: 800px;}        
+        100%{background-position: 800px;}        
+    }
+    .wink{
+        transition: all 1s;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+    background-image: linear-gradient(313deg,transparent, transparent, transparent, transparent, white, transparent,transparent,transparent, transparent);
+    -webkit-mask-image: url(logo.png);
+    background-repeat: no-repeat;
+    animation: wink 5s cubic-bezier(.71,.84,0,.66) infinite;
+}
+    #logoblik{
+        position: absolute;
+        
+        top: 0;
+        left: 0;
+        
+    }
     .date-container{
         height: 60vh;
         width: 25vw;
         position: absolute;
         display: flex;
-        top: 40vh;
+        top: 30vh;
         left: 0;
         right: 0;
         bottom: 0;
         margin: auto;
         gap: 3vw;
         align-items: center;
-        transform: translate3d(0px, 20px, 2px);
+        transform: translate3d(0px, 0px, 10px);
     }
     #header {
     position: absolute;
@@ -490,9 +533,9 @@ color: white;
     background: url(font_back.png);
     background-size: 100%;
     -webkit-background-clip: text;
-    top: 70vh;
+    top: 67vh;
     left: 50vw;
-    transform: translate(-50%,-50%) translate3d(0px, 20px, 2px);
+    transform: translate(-50%,-50%) translate3d(0px, 0px, 10px);
     z-index: 2;
     
     }
