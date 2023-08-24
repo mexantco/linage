@@ -121,11 +121,16 @@ window.addEventListener('devicemotion', function(event) {
   
 // if(iteration==10){
     if(Math.abs(event.accelerationIncludingGravity.x-x)>0.5){x = event.accelerationIncludingGravity.x;}
-    if(Math.abs(event.accelerationIncludingGravity.y-y)>0.5){y = event.accelerationIncludingGravity.y;}
+    if(Math.abs(event.accelerationIncludingGravity.y-y)>0.5){
+        switch(true){
+        case event.accelerationIncludingGravity.y>1090: y=1090; break;
+        case event.accelerationIncludingGravity.y<-400: y=-400; break;
+        case event.accelerationIncludingGravity.y>=-400&&event.accelerationIncludingGravity.y<=1090: y=event.accelerationIncludingGravity.y; break;
+}
     if(Math.abs(event.accelerationIncludingGravity.z-z)>0.5){z = event.accelerationIncludingGravity.z;}
    
    
-$(".paralaks_content").css('transition','perspective-origin 1s ease-out');
+$(".paralaks_content").css('transition','perspective-origin 0.7s ease-out');
   $(".paralaks_content").css('perspective-origin', (-500*x)+'px '+(220*y-1100)+'px');
 //   <-400?-400:((20*y)>1100?1100:(20*y))
 // iteration=0;
