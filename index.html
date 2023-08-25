@@ -12,7 +12,7 @@
     <div id="accselX" style="left:50px" class="accsel">1</div>
     <div id="accselY" style="left:140px" class="accsel">2</div>
     <div id="accselZ" style="left:250px" class="accsel">3</div>
-    <div class="plane" ><img src="flag.png" alt="" style="display: none;" id="flag" ></div>
+    
 
    <div class="wrapper" >
     <img src="social.png" alt="" id="social">
@@ -35,8 +35,9 @@
         <img id="playbtn" src="play.png">
         <img id="playglow" src="glow.png">
         <img id="playicon" src="playicon.png">
-        <!-- <img style="z-index: 999; position: absolute; right: 5vw; top: 5vh;" src="assets/flag.gif" id="videoflag" class="" controls="true" autoplay="autoplay" loop="true" muted defaultmuted playsinline >hbjhgjh</ш> -->
-
+        <img  src="assets/flag.gif" id="videoflag" class=""  >hbjhgjh</ш>
+        <img  src="online365.png" id="onlinetext" class=""  >hbjhgjh</ш>
+        
         <div class="paralaks_content">
             <!-- <div class="paralaks_content_back"></div> -->
             <!-- <img class="paralacks_background" src="background.png"> -->
@@ -127,32 +128,32 @@ var x=0;
 var y=0;
 var z=0;
 var iteration = 0;
-// window.addEventListener('devicemotion', function(event) {
-//     // iteration++;
+window.addEventListener('devicemotion', function(event) {
+    // iteration++;
   
-// // if(iteration==10){
-//     if(Math.abs(event.accelerationIncludingGravity.x-x)>0.5){x = event.accelerationIncludingGravity.x;}
-//     if(Math.abs(event.accelerationIncludingGravity.y-y)>0.5){
-//         switch(true){
-//         case (220*event.accelerationIncludingGravity.y-1100)>1090: perOrigY =1090; break;
-//         case (220*event.accelerationIncludingGravity.y-1100)<-400: perOrigY = -400; break;
-//         case (220*event.accelerationIncludingGravity.y-1100)>=-400&&(220*event.accelerationIncludingGravity.y-1100)<=1090: perOrigY = 220*event.accelerationIncludingGravity.y-1100; break;
-//             }
-//         }
-//     if(Math.abs(event.accelerationIncludingGravity.z-z)>0.5){z = event.accelerationIncludingGravity.z;}
+// if(iteration==10){
+    if(Math.abs(event.accelerationIncludingGravity.x-x)>0.5){x = event.accelerationIncludingGravity.x;}
+    if(Math.abs(event.accelerationIncludingGravity.y-y)>0.5){
+        switch(true){
+        case (220*event.accelerationIncludingGravity.y-1100)>1090: perOrigY =1090; break;
+        case (220*event.accelerationIncludingGravity.y-1100)<-400: perOrigY = -400; break;
+        case (220*event.accelerationIncludingGravity.y-1100)>=-400&&(220*event.accelerationIncludingGravity.y-1100)<=1090: perOrigY = 220*event.accelerationIncludingGravity.y-1100; break;
+            }
+        }
+    if(Math.abs(event.accelerationIncludingGravity.z-z)>0.5){z = event.accelerationIncludingGravity.z;}
    
     
-// $(".paralaks_content").css('transition','perspective-origin 0.7s ease-out');
-//   $(".paralaks_content").css('perspective-origin', (-500*x)+'px '+perOrigY+'px');
+$(".paralaks_content").css('transition','perspective-origin 0.7s ease-out');
+  $(".paralaks_content").css('perspective-origin', (-500*x)+'px '+perOrigY+'px');
 
 
   
-//   $('#accselX').text('X='+x.toFixed(1));
-//   $('#accselY').text('Y='+y.toFixed(1));
-//   $('#accselZ').text('Z='+$(".paralaks_content").css('perspective-origin'));
-// }
+  $('#accselX').text('X='+x.toFixed(1));
+  $('#accselY').text('Y='+y.toFixed(1));
+  $('#accselZ').text('Z='+$(".paralaks_content").css('perspective-origin'));
+}
 
-// );
+);
 // navigator.permissions.query({ name: "accelerometer" });
 // GS.addEventListener("reading", e=>{
 //     $('#accselX').text(GS.x);
@@ -198,6 +199,20 @@ $(document).mousemove(function(event){
     transform: translate3d(0, 0, 15px);
     }
 .accsel {display: none; z-index: 20; position: absolute; color:white; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;}
+#videoflag{
+    -webkit-mask-image: url(/assets/flagmask.png); 
+    z-index: 999; 
+    position: absolute; 
+    right: 3vw; 
+    top: 5vh; 
+    height: 35vh;
+}
+#onlinetext{
+    z-index: 999; 
+    position: absolute; 
+    right: 4.5vw; 
+    top: 13vh; 
+}
 @keyframes glow{
 
 0% {opacity: 0.3;}
@@ -390,7 +405,7 @@ color: white;
     display: flex;
     justify-content: center;
     align-items: center;
-    top: 60vh;
+    top: 50vh;
     left: 0; right: 0; bottom: 0;
     margin: auto;
     transform:  translate3d(0px, 0px, 10px);
@@ -402,7 +417,7 @@ color: white;
     }
      #glow1, #glow2 {
         position: absolute;
-        opacity: 0.5;
+        opacity: 0.2;
         filter: blur(50px);
         width: 80px;
      }
@@ -498,7 +513,7 @@ color: white;
     }
     .logo {transform: translate3d(0px, 0px, 10px); 
         width: 60vw;
-    top:-10vh;}
+    top:-20vh;}
     @keyframes wink {
         0%{background-position-x: -800px;}
         30%{background-position: 800px;}        
@@ -526,7 +541,7 @@ color: white;
         width: 25vw;
         position: absolute;
         display: flex;
-        top: 30vh;
+        top: 20vh;
         left: 0;
         right: 0;
         bottom: 0;
@@ -543,7 +558,7 @@ color: white;
     background: url(font_back.png);
     background-size: 100%;
     -webkit-background-clip: text;
-    top: 67vh;
+    top: 64vh;
     left: 50vw;
     transform: translate(-50%,-50%) translate3d(0px, 0px, 10px);
     z-index: 2;
