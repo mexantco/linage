@@ -4,15 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="js/curtains.umd.min.js"></script> 
     <script data-require="jquery@3.1.1" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body>
+    
     <div id="accselX" style="left:50px" class="accsel">1</div>
     <div id="accselY" style="left:140px" class="accsel">2</div>
     <div id="accselZ" style="left:250px" class="accsel">3</div>
-   <div class="wrapper">
+    <div class="plane" ><img src="flag.png" alt="" style="display: none;" id="flag" ></div>
+
+   <div class="wrapper" >
     <img src="social.png" alt="" id="social">
-    <img src="flag.png" alt="" id="flag">
+    
         <div id="menu">
             <img src="menuline.png" alt="" id="menuline">
             <img src="menu.png" alt="" id="menuicon">
@@ -31,7 +35,8 @@
         <img id="playbtn" src="play.png">
         <img id="playglow" src="glow.png">
         <img id="playicon" src="playicon.png">
-        
+        <!-- <img style="z-index: 999; position: absolute; right: 5vw; top: 5vh;" src="assets/flag.gif" id="videoflag" class="" controls="true" autoplay="autoplay" loop="true" muted defaultmuted playsinline >hbjhgjh</ш> -->
+
         <div class="paralaks_content">
             <!-- <div class="paralaks_content_back"></div> -->
             <!-- <img class="paralacks_background" src="background.png"> -->
@@ -114,7 +119,9 @@
    </div>
 </body>
 
-<script>   
+<script type="module">   
+
+
 
 var x=0;
 var y=0;
@@ -166,10 +173,11 @@ var iteration = 0;
 //   $('#accselY').text(Math.floor(event.beta));
 //   $('#accselZ').text(Math.floor(event.gamma));
 // });
+document.getElementById('videoback').play();
 $(document).mousemove(function(event){
     var mouseX = event.pageX;
     var mouseY = event.pageY;
-    document.getElementById('videoback').play();
+    
     $(".paralaks_content").css('perspective-origin', (event.pageX/3)+'px '+(event.pageY/4)+'px');
     $(".paralaks_content").css("transform", 'rotateX('+(2000-mouseY)/100+'deg)');
     $(".paralaks_content").css("transform", 'rotateY('+(1000-mouseX)/100+'deg)');
@@ -178,12 +186,13 @@ $(document).mousemove(function(event){
     $('.elipse1, .elipse2').css('transform', 'translateX('+(1000-mouseX)/2000*-1+'vw)');
     $('.elipse6, .elipse4').css('transform', 'translateX('+(1000-mouseX)/2000*1+'vw) rotate(90deg)');
     
-    console.log('mouse '+ mouseX);
-    console.log('rot '+ mouseY/2000);
+    
 }); 
 </script>
 
 <style>
+    
+    
     .paralacks_foreground{
         mix-blend-mode: lighten;
     transform: translate3d(0, 0, 15px);
@@ -329,7 +338,7 @@ color: white;
     display: flex;
     flex-direction: column;
      }
-    #playbtn, #playglow{
+    #playbtn{
         width: 10vw;
     position: absolute;
     right: 3vw;
@@ -337,12 +346,13 @@ color: white;
      }
      #playglow{
         width: 18vw;
+        position: absolute;
         transition: opacity 0.5s;
         animation-duration: 4s;
 	animation-name: glow;
 	animation-iteration-count: infinite;
-    right: 0.5vw;
-    bottom: 0.5vw;
+    right: -1vw;
+    bottom: -1vw;
      }
      #playicon{
         width: 14vw;
