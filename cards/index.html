@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body>
+    <video id="videoback" src="../assets/videoback6.mp4" autoplay="autoplay" class="" loop="true"  playsinline ></video>
+    <div class="wrapper row" id="container">
+         
+             <div class="card_content" id="card1" ><div class="card"><div class="light" ></div></div></div>
+             <div class="card_content" id="card2" ><div class="card"><div class="light" ></div></div></div>
+             <div class="card_content" id="card3" ><div class="card"><div class="light" ></div></div></div>
+             <div class="card_content" id="card4" ><div class="card"><div class="light" ></div></div></div>
+             <div class="card_content" id="card5" ><div class="card"><div class="light" ></div></div></div>
+             <div class="card_content" id="card6" ><div class="card"><div class="light" ></div></div></div>
+        
+    </div>
+    <script>
+        $('#videoback').on('ended', function () {
+  this.load();
+  this.play();
+});
+        $('.card_content:not(.active)').on('mousemove',function (pos) {
+            let le_wi=$(this).find('.light').width()/2;
+            let le_hi=$(this).find('.light').height()/2;
+           $(this).find('.light').attr('style', 'top:'+(pos.offsetY-le_hi)+'px; left:'+(pos.offsetX-le_wi)+'px;')
+
+            let scrollTop = $('body').scrollTop();
+           let top = $(window).height()/2.5;
+           console.log('sc='+scrollTop+' top= '+top);
+            var wi = $(this).width();
+            var he = $(this).height();
+           var otnwi = 100*pos.offsetX/wi;
+           var otnhe = 100*pos.offsetY/he;
+           
+           var corY = -0.3*otnwi+15;
+           var corX = -0.3*otnhe+15;
+           var cor2Y= 360+(-0.3*otnwi+15);
+           var cor2X=-0.3*otnhe+15;
+           if($(this).hasClass('active')){
+            
+            $(this).attr('style', 'transform:translate3d(-50%, -50%, 15vw) rotateY('+cor2Y+'deg) rotateX('+(-cor2X)+'deg)!important; top:'+(scrollTop+top)+'px!important;');
+
+           }else{
+           $(this).css('transform', 'translate3d(0, 0, 0) rotateY('+corY+'deg) rotateX('+(-corX)+'deg)');
+}
+});
+        
+    var act = false;
+        $('.card_content').on('click', (e)=>{
+           
+           let el_id= e.target.id;
+
+           if(act){
+            
+            $('.active').removeAttr('style');
+            $('.active').toggleClass('active');
+           
+           act=false;}
+           
+            if($('#'+el_id).attr('data-left') == undefined){
+                
+
+                
+           var left = $('#'+el_id).css('left');
+           
+        //    $('#'+el_id).css('transform', 'translate3d(-50%, 0, 15vw) rotateY(360deg)');
+        //    $('#'+el_id).css('z-index', '5');
+        //    $('#'+el_id+' .card').css('background', 'green');
+        //    $('#'+el_id).css('left', '50vw');
+           $('#'+el_id).removeAttr('style');
+           $('#'+el_id).toggleClass('active');
+           let scrollTop = $('body').scrollTop();
+           let top = $(window).height()/2.5;
+           console.log('sc='+scrollTop+' top= '+top);
+        $('#'+el_id).attr('style', 'top:'+(scrollTop+top)+'px!important;')
+           $('#'+el_id).attr('data-left', left);
+           console.log($('#'+el_id).css('transform'));
+            act=true;
+
+           }else{
+           
+            
+            
+            var left = $('#'+el_id).attr('data-left');
+            
+            
+            $('.active').toggleClass('active');
+            $('#'+el_id).removeAttr('style');
+            $('#'+el_id).removeAttr('data-left');
+            
+             act=false;
+         }
+
+           
+  });
+  
+  
+    </script>
+</body>
+<style>
+    #videoback{
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 120vh;
+        
+    }
+    .light{
+        
+        transition: all 1s ;
+        transition-timing-function: cubic-bezier(.47,1.64,.41,.8);
+        position: absolute;
+        background-image: radial-gradient(at center, white, transparent, transparent,transparent);
+        width: 50vw;
+        height: 100vh;
+        mix-blend-mode: soft-light;
+    filter: blur(10px);
+        
+    }
+    .active{
+        
+        transform: translate3d(-50%, -50%, 15vw) rotateY(360deg)!important;
+        z-index: 5!important;
+        /* top: 50vh!important;  */
+        left: 50vw!important;
+    }
+    /* .active .card{} */
+    .wrapper{
+        transform-style: preserve-3d;
+        perspective-origin: 50vw 30vh;
+    perspective: 90vw;
+        
+    }
+    body{
+        background: #484848;
+        height: 100vh;
+        overflow-x: scroll;
+    }
+    html{
+        height: 100vh;
+        overflow-x: clip;
+    }
+    .col-md-2, .col-md-10 {
+        height: 100%;
+    }
+        .cards_container{
+            
+            transform-style: preserve-3d;
+        perspective-origin: 0 0;
+        perspective: 1000px;  
+        /* display: grid;
+        grid-template-columns: auto auto auto; */
+    }
+    #card1{
+        position: absolute;
+        top: 10vh;
+        left: 10vw;
+        /* width: 10vw; */
+        /* height: 20vh; */
+    }
+    #card2{
+        position: absolute;
+        top: 10vh;
+        left: 36vw;
+        /* width: 10vw; */
+        /* height: 20vh; */
+    }
+    #card3{
+        position: absolute;
+        top: 10vh;
+        left: 62vw;
+        /* width: 10vw; */
+        /* height: 20vh; */
+    }
+    #card4{
+        position: absolute;
+        top: 90vh;
+        left: 10vw;
+        /* width: 10vw; */
+        /* height: 20vh; */
+    }
+    #card5{
+        position: absolute;
+        top: 90vh;
+        left: 36vw;
+        /* width: 10vw; */
+        /* height: 20vh; */
+    }
+    #card6{
+        position: absolute;
+        top: 90vh;
+        left: 62vw;
+        /* width: 10vw; */
+        /* height: 20vh; */
+    }
+    .card{
+        background-image: url('https://upload.wikimedia.org/wikipedia/en/b/bc/Lineage_cover.jpg');
+          pointer-events: none;
+          height: 100%;
+          width: 100%;
+          
+          border-radius: 30px;
+    }
+    .card_content {
+        
+        overflow: hidden;
+        transition: all 1s ;
+        transition-timing-function: cubic-bezier(.47,1.64,.41,.8);
+        border-radius: 30px;
+            
+        height: 60vh;
+        width: 25%;
+        
+        
+    }
+    
+</style>
+</html>
