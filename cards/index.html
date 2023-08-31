@@ -42,7 +42,7 @@
         
 let detect = new MobileDetect(window.navigator.userAgent);
 
-if(detect.mobile()==null&&(window.innerHeight > window.innerWidth)){
+if(!(detect.mobile()==null&&(window.innerHeight > window.innerWidth))){
 
     $('.card_content:not(.active)').on('mousemove',function (pos) {
             let le_wi=$(this).find('.light').width()/2;
