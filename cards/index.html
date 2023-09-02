@@ -16,6 +16,11 @@
     
     <video id="videoback" src="../assets/videoplayback(4)_1.mp4"  autoplay="autoplay" class="" loop="true"   muted="muted" playsinline ></video>
     <div class="lang">in english</div>
+    <div class="lang2">
+          <div class="lan ru activelang"></div>
+          <div class="lan en"></div>
+          <div class="lan ua"></div>
+    </div>
     <div class="wrapper row" id="container">
         <div class="preload_container"></div>
         <div class="logo_container">
@@ -42,7 +47,7 @@
         
 let detect = new MobileDetect(window.navigator.userAgent);
 
-if((window.innerHeight < window.innerWidth)||detect.mobile()==null){
+if(detect.mobile()==null){
 
     $('.card_content:not(.active)').on('mousemove',function (pos) {
             let le_wi=$(this).find('.light').width()/2;
@@ -70,6 +75,7 @@ if((window.innerHeight < window.innerWidth)||detect.mobile()==null){
 }
 });
     var act = false;
+
         $('.card_content').on('click', (e)=>{
            
            let el_id= e.target.id;
@@ -96,7 +102,7 @@ if((window.innerHeight < window.innerWidth)||detect.mobile()==null){
            let scrollTop = $('body').scrollTop();
            let top = $(window).height()/2.2;
            console.log('sc='+scrollTop+' top= '+top);
-        $('#'+el_id).attr('style', 'top:'+(scrollTop+top)+'px!important;')
+           $('#'+el_id).attr('style', 'top:'+(scrollTop+top)+'px!important;')
            $('#'+el_id).attr('data-left', left);
            console.log($('#'+el_id).css('transform'));
             act=true;
@@ -118,6 +124,12 @@ if((window.innerHeight < window.innerWidth)||detect.mobile()==null){
            
   });
 }
+
+$('.card_content:not(.active)').on('mouseleave', (e)=>{
+    let id = e.target.id;
+    
+    $('#'+id).removeAttr('style');
+}); 
   var lang = 'ru';
     $('.lang').on('click', ()=>{
         if(lang=='ru'){
@@ -141,7 +153,10 @@ if((window.innerHeight < window.innerWidth)||detect.mobile()==null){
         const fn=()=>{
             $('.preload_container').css('opacity', '0');
             $('.preload_container').css('z-index', '0');
-            $('.lang').css('left','0');
+            if(detect.mobile()==null){
+            $('.lang2').css('left','0');}else{
+                $('.lang2').css('top','0');
+            }
             $('.arrow_down').css('text-shadow', '0px 0px 0px rgb(255, 208, 163)');
 
         }
@@ -156,7 +171,12 @@ if((window.innerHeight < window.innerWidth)||detect.mobile()==null){
         $('#wink').addClass('wink');
         $('.logo_container').css('opacity','1');
         
-    })
+    });
+    
+    $('.lan').on('click', function(){
+        $('*').removeClass('activelang');
+        $(this).addClass('activelang');
+    });
     </script>
 </body>
 <style>
@@ -208,12 +228,52 @@ if((window.innerHeight < window.innerWidth)||detect.mobile()==null){
     text-align: left;
 
     }
+    .lang2{
+        transition: all 1s cubic-bezier(.22,.81,.01,.99);
+        top: 50vh;
+    left: -5vw;
+         display: flex;
+         flex-direction: column;
+         position: absolute;
+    height: 20vh;
+    width: 2.5vw;
+    transform: translate(0, -50%);
+    background: #ffffff45;
+    border-radius: 0.7vw;
+    z-index: 10;
+    }
+    .lan{
+        transition: filter 0.5s;
+        cursor: pointer;
+        color: #cfcece;
+        flex: 1;
+        justify-content: center;
+    align-items: center;
+    display: flex;
+filter: brightness(0.5);
+    }
+    .activelang{
+        filter: brightness(0.95);
+    }
+    .ru{
+        background: no-repeat center/80% url('../assets/img/Flag of Russia.png');
+    }
+    .en{
+        background: no-repeat center/80% url('../assets/img/Flag of United States.png');
+    }
+    .ua{
+        background: no-repeat center/80% url('../assets/img/Flag of Ukraine.png');
+    }
+
     *::-webkit-scrollbar { width: 0; }
     #videoback{
         position: fixed;
         top: 0;
         left: 0;
         height: 120vh;
+        width: 100vw;
+        -o-object-fit: cover;
+      object-fit: cover;
         
     }
     .preload_container{
@@ -250,10 +310,10 @@ if((window.innerHeight < window.innerWidth)||detect.mobile()==null){
 }
     .logo_container{
         z-index: 11;
-        transition: all 1s;
+        transition: opacity 1s;
         opacity: 0;
         width: 30vw;
-        height: 30vh;
+        height: 15vw;
         position: absolute;
         top: 50vh;
         left: 50vw;
@@ -300,7 +360,7 @@ if((window.innerHeight < window.innerWidth)||detect.mobile()==null){
         transform-style: preserve-3d;
         perspective-origin: 50vw 30vh;
     perspective: 300vw;
-    height: 150vw;
+    height: 190vw;
         
     }
     body{
@@ -346,21 +406,21 @@ if((window.innerHeight < window.innerWidth)||detect.mobile()==null){
     }
     #card4{
         position: absolute;
-        top: 100vw;
+        top: 220vh;
         left: 12vw;
         /* width: 10vw; */
         /* height: 20vh; */
     }
     #card5{
         position: absolute;
-        top: 100vw;
+        top: 220vh;
         left: 38vw;
         /* width: 10vw; */
         /* height: 20vh; */
     }
     #card6{
         position: absolute;
-        top: 100vw;
+        top: 220vh;
         left: 64vw;
         /* width: 10vw; */
         /* height: 20vh; */
@@ -374,6 +434,7 @@ if((window.innerHeight < window.innerWidth)||detect.mobile()==null){
           border-radius: 30px;
     }
     .card_content {
+        box-shadow: 0 0 16px 0px white;
         filter: brightness(0.8);
         overflow: hidden;
         transition: all 1s ;
@@ -387,20 +448,69 @@ if((window.innerHeight < window.innerWidth)||detect.mobile()==null){
     }
     
     /* ///////////////////////////////////// */
-    @media only screen and (max-width:480px){
+    @media (max-width:1300px){
+        .wrapper{
+            height: 270vh;
+        }
+        #card4{
+        position: absolute;
+        top: 190vh;
+        left: 12vw;
+        /* width: 10vw; */
+        /* height: 20vh; */
+    }
+    #card5{
+        position: absolute;
+        top: 190vh;
+        left: 38vw;
+        /* width: 10vw; */
+        /* height: 20vh; */
+    }
+    #card6{
+        position: absolute;
+        top: 190vh;
+        left: 64vw;
+        /* width: 10vw; */
+        /* height: 20vh; */
+    }
+    }
+
+
+
+
+
+
+    @media only screen and (max-width:700px) and (orientation: portrait){
+        .lan{background-size: 60%;}
+        .lang2{
+            transition: all 1s cubic-bezier(.22,.81,.01,.99);
+    top: -10vh;
+    left: 50vw;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    height: 4.5vh;
+    width: 20vh;
+    transform: translate(-50%, 0%);
+    background: #ffffff45;
+    border-radius: 0.7vw;
+    z-index: 10;
+        }
         body{scroll-snap-type: y mandatory;}
         #videoback{
             left: -80vh;
+            width: initial;
         }
         .logo_container{
             scroll-snap-align: center;
             left: 50%;
             width: 60vw;
-            height: 20vh;
+            height: 30vw;
         }
         .wrapper{ transform-style: flat; height: 1100vh;}
         .card_content{
-            height: 120vw;
+            filter: brightness(1);
+            height: 110vw;
             width: 70vw;
             
             scroll-snap-align: center;
