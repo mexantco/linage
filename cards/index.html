@@ -51,6 +51,7 @@ let detect = new MobileDetect(window.navigator.userAgent);
 if(detect.mobile()==null){
 
     $('.card_content:not(.active)').on('mousemove',function (pos) {
+            $(this).css('transition', 'initial');
             let le_wi=$(this).find('.light').width()/2;
             let le_hi=$(this).find('.light').height()/2;
            $(this).find('.light').attr('style', 'top:'+(pos.offsetY-le_hi)+'px; left:'+(pos.offsetX-le_wi)+'px;')
@@ -125,8 +126,8 @@ if(detect.mobile()==null){
 
 $('.card_content:not(.active)').on('mouseleave', (e)=>{
     let id = e.target.id;
-    
-    $('#'+id).removeAttr('style');
+    $('#'+id).css('transition', 'all 0.5s  cubic-bezier(.47,1.64,.41,.8)')
+    $('#'+id).css('transform', 'translate3d(0,0,0)');
 }); 
   var lang = 'ru';
     $('.lang').on('click', ()=>{
