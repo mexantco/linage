@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css" >
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.5/mobile-detect.min.js" integrity="sha512-1vJtouuOb2tPm+Jh7EnT2VeiCoWv0d7UQ8SGl/2CoOU+bkxhxSX4gDjmdjmbX4OjbsbCBN+Gytj4RGrjV3BLkQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -12,9 +13,9 @@
 </head>
 <body>
     
+        <video id="videoback" src="../assets/videoplayback(4)_1.mp4"  autoplay="autoplay" class="" loop="true"   muted="muted" playsinline ></video>
+
     
-    
-    <video id="videoback" src="../assets/videoplayback(4)_1.mp4"  autoplay="autoplay" class="" loop="true"   muted="muted" playsinline ></video>
     <div class="lang">in english</div>
     <div class="lang2">
           <div class="lan ru activelang"></div>
@@ -51,7 +52,7 @@ let detect = new MobileDetect(window.navigator.userAgent);
 if(detect.mobile()==null){
 
     $('.card_content:not(.active)').on('mousemove',function (pos) {
-            $(this).css('transition', 'initial');
+            
             let le_wi=$(this).find('.light').width()/2;
             let le_hi=$(this).find('.light').height()/2;
            $(this).find('.light').attr('style', 'top:'+(pos.offsetY-le_hi)+'px; left:'+(pos.offsetX-le_wi)+'px;')
@@ -68,13 +69,24 @@ if(detect.mobile()==null){
            var corX = -0.3*otnhe+15;
            var cor2Y= 360+(-0.3*otnwi+15);
            var cor2X=-0.3*otnhe+15;
-           if($(this).hasClass('active')){
+//            if($(this).hasClass('active')){
             
-            $(this).attr('style', 'transform:translate3d(-50%, -50%, 15vw) rotateY('+cor2Y+'deg) rotateX('+(-cor2X)+'deg)!important; top:'+(scrollTop+top)+'px!important;');
+//             $(this).attr('style', 'transform:translate3d(-50%, -50%, 15vw) rotateY('+cor2Y+'deg) rotateX('+(-cor2X)+'deg)!important; top:'+(scrollTop+top)+'px!important;');
 
-           }else{
-           $(this).css('transform', 'translate3d(0, 0, 0) rotateY('+corY+'deg) rotateX('+(-corX)+'deg)');
-}
+//            }else{
+//            $(this).css('transform', 'translate3d(0, 0, 0) rotateY('+corY+'deg) rotateX('+(-corX)+'deg)');
+// }
+// console.log(otnwi+'ff'+otnhe);
+              if((otnwi<30||otnwi>70)||(otnhe<30||otnhe>70)){
+                
+                
+                $(this).css('transform', 'translate3d(0, 0, 0) rotateY('+corY+'deg) rotateX('+(-corX)+'deg)');
+                
+              }else{
+                $(this).css('transition', 'initial');
+                $(this).css('transform', 'translate3d(0, 0, 0) rotateY('+corY+'deg) rotateX('+(-corX)+'deg)');
+            }
+
 });
     var act = false;
 
@@ -168,7 +180,7 @@ $('.card_content:not(.active)').on('mouseleave', (e)=>{
         
         }
         setTimeout(fn, 3000);
-        setTimeout(fn2, 5000);
+        //setTimeout(fn2, 3000);
         $('#wink').addClass('wink');
         $('.logo_container').css('opacity','1');
        
@@ -205,406 +217,5 @@ $('.card_content:not(.active)').on('mouseleave', (e)=>{
     })
     </script>
 </body>
-<style>
-   
-    @font-face {
-  font-family: "Runic AltNo";
-  font-style: normal;
-  font-weight: 400;
-  
-  src: local("Runic AltNo"),
-       
-       url("../fonts/runicaltno.ttf")
-       
-       
-}  
-    @keyframes wink {
-        0%{background-position-x: -800px;}
-        30%{background-position: 800px;}   
-        100%{background-position: 800px;}        
-              
-    }
-    @keyframes arrow {
-        0%{top:75vh;}
-        50%{top:72vh;}        
-        100%{top:75vh;}
 
-    }
-    
-    .lang{
-        display: none;
-        z-index: 5;
-        backdrop-filter: brightness(3.5) blur(25px) contrast(1.5) grayscale(1);
-        background-clip: padding-box;
-        transition: all 1s cubic-bezier(.22,.81,.01,.99);
-        background-image: linear-gradient(to right,#0000008a, #000000d1, transparent, transparent), url("../assets/img/usa-flag.jpg");
-        background-size: cover;
-        color: white;
-    height: 10vh;
-    width: 20vw;
-    position: absolute;
-    top: 50vh;
-    left: -10vw;
-    transform: translate(-50%, -50%) rotate(90deg);
-    border: 3px solid transparent;
-    padding: 0.5vh 2vw;
-    border-radius: 3vw;
-    font-size: 1.3vw;
-    cursor: pointer;
-    text-align: left;
-
-    }
-    .lang2{
-        transition: all 1s cubic-bezier(.22,.81,.01,.99);
-        top: 50vh;
-    left: -5vw;
-         display: flex;
-         flex-direction: column;
-         position: absolute;
-    height: 20vh;
-    width: 2.5vw;
-    transform: translate(0, -50%);
-    background: #ffffff45;
-    border-radius: 0.7vw;
-    z-index: 10;
-    }
-    .lan{
-        transition: all 0.3s;
-        cursor: pointer;
-        color: #cfcece;
-        flex: 1;
-        justify-content: center;
-    align-items: center;
-    display: flex;
-filter: brightness(0.5);
-    }
-    .activelang{
-        filter: brightness(0.95);
-    }
-    .ru{
-        background: no-repeat center/80% url('../assets/img/Flag of Russia.png');
-    }
-    .en{
-        background: no-repeat center/80% url('../assets/img/Flag of United States.png');
-    }
-    .ua{
-        background: no-repeat center/80% url('../assets/img/Flag of Ukraine.png');
-    }
-    .com{
-        background: no-repeat center/80% url('../assets/img/world.png');
-        filter: invert(1);
-        flex: 0;
-        
-    }
-
-    *::-webkit-scrollbar { width: 0; }
-    #videoback{
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 120vh;
-        width: 100vw;
-        -o-object-fit: cover;
-      object-fit: cover;
-        
-    }
-    .preload_container{
-        opacity: 1;
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        width: 100%;
-        background-color: black;
-        z-index: 10;
-        transition: all 5s;
-    }
-    
-    .logo{
-        top: 0;
-        left: 0;
-        position: absolute;
-    width: 100%;
-    height: 100%;
-       
-    }
-    .wink{
-        transition: all 1s;
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-position: center;
-    -webkit-mask-size: 100% 100%;
-    background-image: linear-gradient(313deg,transparent, transparent, transparent, transparent, white, transparent,transparent,transparent, transparent);
-    -webkit-mask-image: url(../assets/img/logo.png);
-    background-repeat: no-repeat;
-    animation: wink 20s cubic-bezier(.71,.84,0,.66) infinite ;
-    animation-fill-mode: forwards;
-    
-}
-    .logo_container{
-        z-index: 11;
-        transition: opacity 1s;
-        opacity: 0;
-        width: 30vw;
-        height: 15vw;
-        position: absolute;
-        top: 50vh;
-        left: 50vw;
-        right: 50vw;
-        transform: translate(-50%, -50%);
-    }
-    .arrow_down{
-        animation: arrow 2.5s infinite ease-in-out;
-        text-shadow: 0px 15vh 3vh rgb(255, 208, 163);
-        position: absolute;
-        font-family: 'Runic AltNo', sans-serif;
-        transition: text-shadow 4s cubic-bezier(1,0.03,0.78,1);;
-        top: 75vh;
-        left: 50vw;
-        right: 50vw;
-        transform: translate(-50%, -50%);
-        margin: auto;
-        color: rgba(245, 222, 179, 0);
-        font-size: 12vh;
-        transform: rotateX(180deg);
-    }
-    .light{
-        
-        /* transition: all 1s ; */
-        transition-timing-function: cubic-bezier(.47,1.64,.41,.8);
-        position: absolute;
-        background-image: radial-gradient(at center, #ffc107, transparent, transparent,transparent);
-        width: 50vw;
-        height: 100vh;
-        mix-blend-mode: soft-light;
-    filter: blur(10px);
-        
-    }
-    .active{
-        box-shadow: 1px -1px 200px 43px #00000082!important;
-        filter: brightness(1)!important;
-        transform: translate3d(-50%, -50%, 15vw) rotateY(360deg)!important;
-        z-index: 5!important;
-        /* top: 50vh!important;  */
-        left: 50vw!important;
-    }
-    /* .active .card{} */
-    .wrapper{
-        transform-style: preserve-3d;
-        perspective-origin: 50vw 30vh;
-    perspective: 300vw;
-    height: 190vw;
-        
-    }
-    body{
-        background: #484848;
-        height: 100vh;
-        overflow-x: hidden;
-        overflow-y: clip;
-    }
-    html{
-        height: 100vh;
-        overflow-x: clip;
-    }
-    .col-md-2, .col-md-10 {
-        height: 100%;
-    }
-        .cards_container{
-            
-            transform-style: preserve-3d;
-        perspective-origin: 0 0;
-        perspective: 1000px;  
-        /* display: grid;
-        grid-template-columns: auto auto auto; */
-    }
-    #card1{
-        position: absolute;
-        top: 110vh;
-        left: 12vw;
-        /* width: 10vw; */
-        /* height: 20vh; */
-    }
-    #card2{
-        position: absolute;
-        top: 110vh;
-        left: 38vw;
-        /* width: 10vw; */
-        /* height: 20vh; */
-    }
-    #card3{
-        position: absolute;
-        top: 110vh;
-        left: 64vw;
-        /* width: 10vw; */
-        /* height: 20vh; */
-    }
-    #card4{
-        position: absolute;
-        top: 220vh;
-        left: 12vw;
-        /* width: 10vw; */
-        /* height: 20vh; */
-    }
-    #card5{
-        position: absolute;
-        top: 220vh;
-        left: 38vw;
-        /* width: 10vw; */
-        /* height: 20vh; */
-    }
-    #card6{
-        position: absolute;
-        top: 220vh;
-        left: 64vw;
-        /* width: 10vw; */
-        /* height: 20vh; */
-    }
-    .card{
-        background-image: url('https://upload.wikimedia.org/wikipedia/en/b/bc/Lineage_cover.jpg');
-          pointer-events: none;
-          height: 100%;
-          width: 100%;
-          
-          border-radius: 30px;
-    }
-    .card_content {
-        box-shadow: 0 0 16px 0px white;
-        filter: brightness(0.8);
-        overflow: hidden;
-        /* transition: all 1s ; */
-        transition-timing-function: cubic-bezier(.47,1.64,.41,.8);
-        border-radius: 30px;
-            
-        height: 35vw;
-        width: 23vw;
-        
-        
-    }
-    
-    /* ///////////////////////////////////// */
-    @media (max-width:1300px){
-        .wrapper{
-            height: 270vh;
-        }
-        #card4{
-        position: absolute;
-        top: 190vh;
-        left: 12vw;
-        /* width: 10vw; */
-        /* height: 20vh; */
-    }
-    #card5{
-        position: absolute;
-        top: 190vh;
-        left: 38vw;
-        /* width: 10vw; */
-        /* height: 20vh; */
-    }
-    #card6{
-        position: absolute;
-        top: 190vh;
-        left: 64vw;
-        /* width: 10vw; */
-        /* height: 20vh; */
-    }
-    }
-
-
-
-
-    @media (max-width:700px) and (orientation: landscape){
-        .lang2{display: none;
-    }
-    }
-
-    @media only screen and (max-width:700px) and (orientation: portrait){
-        .lan{background-size: 60%;}
-        .lang2{
-            transition: all 1s cubic-bezier(.22,.81,.01,.99);
-    top: -10vh;
-    left: 50vw;
-    display: flex;
-    flex-direction: row;
-    position: absolute;
-    height: 4.5vh;
-    width: 20vh;
-    transform: translate(-50%, 0%);
-    background: #ffffff45;
-    border-radius: 0.7vw;
-    z-index: 10;
-        }
-        body{scroll-snap-type: y mandatory;}
-        #videoback{
-            left: -80vh;
-            width: initial;
-        }
-        .logo_container{
-            scroll-snap-align: center;
-            left: 50%;
-            width: 60vw;
-            height: 30vw;
-        }
-        .wrapper{ transform-style: flat; height: 1100vh;}
-        .card_content{
-            filter: brightness(1);
-            height: 110vw;
-            width: 70vw;
-            
-            scroll-snap-align: center;
-        }
-    #card1{
-        position: absolute;
-        top: 200vw;
-        left: 0;
-            right: 0;
-            margin: auto;
-        /* width: 10vw; */
-        /* height: 20vh; */
-    }
-    #card2{
-        position: absolute;
-        top: 350vw;
-        left: 0;
-            right: 0;
-            margin: auto;
-        /* width: 10vw; */
-        /* height: 20vh; */
-    }
-    #card3{
-        position: absolute;
-        top: 500vw;
-        left: 0;
-            right: 0;
-            margin: auto;
-        /* width: 10vw; */
-        /* height: 20vh; */
-    }
-    #card4{
-        position: absolute;
-        top: 650vw;
-        left: 0;
-            right: 0;
-            margin: auto;
-        /* width: 10vw; */
-        /* height: 20vh; */
-    }
-    #card5{
-        position: absolute;
-        top: 800vw;
-        left: 0;
-            right: 0;
-            margin: auto;
-        /* width: 10vw; */
-        /* height: 20vh; */
-    }
-    #card6{
-        position: absolute;
-        top: 950vw;
-        left: 0;
-            right: 0;
-            margin: auto;
-        /* width: 10vw; */
-        /* height: 20vh; */
-    }
-    }
-</style>
 </html>
