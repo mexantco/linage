@@ -23,7 +23,15 @@
         100%{top:75vh;}
 
     }
-    
+    .card_img{
+        height: 110%;
+    position: absolute;
+    top: 0;
+    pointer-events: none;
+    width: 117%;
+    left: 0;
+    transform: translate(-7%,-5%);
+    }
     .lang{
         display: none;
         z-index: 5;
@@ -254,17 +262,18 @@ filter: brightness(0.5);
         /* height: 20vh; */
     }
     .card{
-        background-image: url('https://upload.wikimedia.org/wikipedia/en/b/bc/Lineage_cover.jpg');
+        /* background-image: url('https://upload.wikimedia.org/wikipedia/en/b/bc/Lineage_cover.jpg'); */
           pointer-events: none;
           height: 100%;
           width: 100%;
-          
+          overflow: hidden;
+          background-color: transparent;
           border-radius: 30px;
     }
     .card_content {
+        overflow: visible;
         box-shadow: 0 0 16px 0px white;
         filter: brightness(0.8);
-        overflow: hidden;
         transition: all 2.5s ;
         transition-timing-function: cubic-bezier(.47,1.64,.41,.8);
         border-radius: 30px;
