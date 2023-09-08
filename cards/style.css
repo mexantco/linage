@@ -175,16 +175,17 @@ filter: brightness(0.5);
         /* transition: all 1s ; */
         transition-timing-function: cubic-bezier(.47,1.64,.41,.8);
         position: absolute;
-        background-image: radial-gradient(at center, #ffc107, transparent, transparent,transparent);
+        background-image: radial-gradient(at center, #ffc108b0, transparent, transparent,transparent);
         width: 50vw;
         height: 100vh;
-        mix-blend-mode: soft-light;
+        mix-blend-mode: color-dodge;
     filter: blur(10px);
     top: 0%;
     left: -50%;
         
     }
     .light2{
+        display: none;
         z-index: -2;
         mix-blend-mode: color-dodge;}
 
