@@ -170,8 +170,8 @@ filter: brightness(0.5);
         font-size: 12vh;
         transform: rotateX(180deg);
     }
-    .light{
-        
+    .light, .light2{
+        pointer-events: none;
         /* transition: all 1s ; */
         transition-timing-function: cubic-bezier(.47,1.64,.41,.8);
         position: absolute;
@@ -180,8 +180,14 @@ filter: brightness(0.5);
         height: 100vh;
         mix-blend-mode: soft-light;
     filter: blur(10px);
+    top: 0%;
+    left: -50%;
         
     }
+    .light2{
+        z-index: -2;
+        mix-blend-mode: color-dodge;}
+
     .active{
         box-shadow: 1px -1px 200px 43px #00000082!important;
         filter: brightness(1)!important;

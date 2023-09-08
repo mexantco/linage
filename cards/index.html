@@ -33,13 +33,13 @@
         
         <div class="arrow_down">T</div>
              <div class="card_content" id="card1" >
-                <img class="card_img" src="../assets/img/card_frame.png" >
+                <img class="card_img" src="../assets/img/card1_ru.png" ><div class="light2" ></div>
                 <div class="card"><div class="light" ></div></div></div>
-             <div class="card_content" id="card2" ><img class="card_img" src="../assets/img/card_frame.png" ><div class="card"><div class="light" ></div></div></div>
-             <div class="card_content" id="card3" ><img class="card_img" src="../assets/img/card_frame.png" ><div class="card"><div class="light" ></div></div></div>
-             <div class="card_content" id="card4" ><img class="card_img" src="../assets/img/card_frame.png" ><div class="card"><div class="light" ></div></div></div>
-             <div class="card_content" id="card5" ><img class="card_img" src="../assets/img/card_frame.png" ><div class="card"><div class="light" ></div></div></div>
-             <div class="card_content" id="card6" ><img class="card_img" src="../assets/img/card_frame.png" ><div class="card"><div class="light" ></div></div></div>
+             <div class="card_content" id="card2" ><img class="card_img" src="../assets/img/card2_ru.png" ><div class="light2" ></div><div class="card"><div class="light" ></div></div></div>
+             <div class="card_content" id="card3" ><img class="card_img" src="../assets/img/card3_ru.png" ><div class="light2" ></div><div class="card"><div class="light" ></div></div></div>
+             <div class="card_content" id="card4" ><img class="card_img" src="../assets/img/card4_ru.png" ><div class="light2" ></div><div class="card"><div class="light" ></div></div></div>
+             <div class="card_content" id="card5" ><img class="card_img" src="../assets/img/card_frame.png" ><div class="light2" ></div><div class="card"><div class="light" ></div></div></div>
+             <div class="card_content" id="card6" ><img class="card_img" src="../assets/img/card_frame.png" ><div class="light2" ></div><div class="card"><div class="light" ></div></div></div>
         
     </div>
     <script>
@@ -54,18 +54,22 @@ let detect = new MobileDetect(window.navigator.userAgent);
 if(detect.mobile()==null){
 
     $('.card_content:not(.active)').on('mousemove',function (pos) {
-            
+           
             let le_wi=$(this).find('.light').width()/2;
             let le_hi=$(this).find('.light').height()/2;
+            
            $(this).find('.light').attr('style', 'top:'+(pos.offsetY-le_hi)+'px; left:'+(pos.offsetX-le_wi)+'px;')
 
             let scrollTop = $('body').scrollTop();
            let top = $(window).height()/2.5;
-           console.log('sc='+scrollTop+' top= '+top);
+        //    console.log('sc='+scrollTop+' top= '+top);
             var wi = $(this).width();
             var he = $(this).height();
            var otnwi = 100*pos.offsetX/wi;
            var otnhe = 100*pos.offsetY/he;
+           console.log(otnhe);
+           $(this).find('.light2').attr('style', 'top:'+(3.1*(otnhe)-240)+'px; left:'+(1.45*(otnwi)-230)+'px;')
+
         //    $('.card_content').css('box-shadow', '0 0 15 0 white, '+(0.6*otnwi-30)+'px '+(0.6*otnhe-30)+'px 30px -34px #ffc107')
            var corY = -0.3*otnwi+15;
            var corX = -0.3*otnhe+15;
@@ -142,6 +146,7 @@ $('.card_content:not(.active)').on('mouseleave', (e)=>{
     let id = e.target.id;
     $('#'+id).css('transition', 'all 0.5s  cubic-bezier(.47,1.64,.41,.8)')
     $('#'+id).css('transform', 'translate3d(0,0,0)');
+    $('.light, .light2').css('transition','all 0.5s cubic-bezier(.47,1.64,.41,.8)').css('top','0').css('left', '-50%');
 }); 
   var lang = 'ru';
     $('.lang').on('click', ()=>{
