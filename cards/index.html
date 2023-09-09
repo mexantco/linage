@@ -54,28 +54,37 @@ let detect = new MobileDetect(window.navigator.userAgent);
 if(detect.mobile()==null){
 
     $('.card_content:not(.active)').on('mousemove',function (pos) {
-           
-            let le_wi=$(this).find('.light').width()/2;
-            let le_hi=$(this).find('.light').height()/2;
-            
-           $(this).find('.light').attr('style', 'top:'+(pos.offsetY-le_hi)+'px; left:'+(pos.offsetX-le_wi)+'px;')
-
-            let scrollTop = $('body').scrollTop();
-           let top = $(window).height()/2.5;
-        //    console.log('sc='+scrollTop+' top= '+top);
             var wi = $(this).width();
             var he = $(this).height();
            var otnwi = 100*pos.offsetX/wi;
            var otnhe = 100*pos.offsetY/he;
-           console.log(otnhe);
-           $(this).find('.light2').attr('style', 'top:'+(3.1*(otnhe)-240)+'px; left:'+(1.45*(otnwi)-230)+'px;')
+            let le_wi=$(this).find('.light').width()/2;
+            let le_hi=$(this).find('.light').height()/2;
+            let lightX = (pos.offsetX-le_wi)*1.5+200;
+            let lightY = (pos.offsetY-le_hi)*1.5+200;
+            
+
+            let scrollTop = $('body').scrollTop();
+           let top = $(window).height()/2.5;
+        //    console.log('sc='+scrollTop+' top= '+top);
+           
+           //$(this).find('.light').css('opacity', (0.02*((otnwi+otnhe)/2)-1)+'') 
+           
+           //$(this).find('.light2').attr('style', 'top:'+(3.1*(otnhe)-240)+'px; left:'+(1.45*(otnwi)-230)+'px;')
 
         //    $('.card_content').css('box-shadow', '0 0 15 0 white, '+(0.6*otnwi-30)+'px '+(0.6*otnhe-30)+'px 30px -34px #ffc107')
            var corY = -0.3*otnwi+15;
            var corX = -0.3*otnhe+15;
            var cor2Y= 360+(-0.3*otnwi+15);
            var cor2X=-0.3*otnhe+15;
-//            if($(this).hasClass('active')){
+           
+           var opacity =Math.max(Math.abs(0.066*corY),Math.abs(0.066*-corX));
+           console.log(opacity);
+           console.log('x'+corX);
+           console.log('y'+corY);
+           $(this).find('.light').attr('style', 'opacity:'+opacity+'; top:'+lightY+'px; left:'+lightX+'px;')
+
+           //            if($(this).hasClass('active')){
             
 //             $(this).attr('style', 'transform:translate3d(-50%, -50%, 15vw) rotateY('+cor2Y+'deg) rotateX('+(-cor2X)+'deg)!important; top:'+(scrollTop+top)+'px!important;');
 
@@ -146,7 +155,7 @@ $('.card_content:not(.active)').on('mouseleave', (e)=>{
     let id = e.target.id;
     $('#'+id).css('transition', 'all 0.5s  cubic-bezier(.47,1.64,.41,.8)')
     $('#'+id).css('transform', 'translate3d(0,0,0)');
-    $('.light, .light2').css('transition','all 0.5s cubic-bezier(.47,1.64,.41,.8)').css('top','0').css('left', '-50%');
+    $('.light, .light2').css('transition','all 0.5s cubic-bezier(.47,1.64,.41,.8)').css('opacity','0');
 }); 
   var lang = 'ru';
     $('.lang').on('click', ()=>{
