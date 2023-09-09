@@ -148,7 +148,7 @@ $('.card_content:not(.active)').on('mouseleave', (e)=>{
     let id = e.target.id;
     $('#'+id).css('transition', 'all 0.5s  cubic-bezier(.47,1.64,.41,.8)')
     $('#'+id).css('transform', 'translate3d(0,0,0)');
-    $('.light, .light2').css('transition','all 0.5s cubic-bezier(.47,1.64,.41,.8)').css('opacity','0');
+    $('.light, .light2').css('transition','all 0s').css('opacity','0');
 }); 
   var lang = 'ru';
     $('.lang').on('click', ()=>{
