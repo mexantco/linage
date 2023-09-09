@@ -175,10 +175,10 @@ filter: brightness(0.5);
         /* transition: all 1s ; */
         transition-timing-function: cubic-bezier(.47,1.64,.41,.8);
         position: absolute;
-        /* background-image: radial-gradient(at center, #ffffff57,#ececec40, #ececec30,#a2a2a229, #8f8f8f29, transparent,transparent,transparent,transparent,transparent); */
-         background-image: radial-gradient(at center, #ffffff7d,transparent,transparent);
-        width: 70vw;
-        height: 200vh;
+        background-image: radial-gradient(at center, #ffffff5e,#ffffff24,transparent,transparent,transparent,transparent,transparent);
+         /* background-image: radial-gradient(at center, #ffffff7d,transparent,transparent); */
+        width: 50vw;
+        height: 100vh;
         mix-blend-mode: plus-lighter;
     filter: blur(10px);
     opacity: 0;

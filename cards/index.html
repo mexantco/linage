@@ -60,29 +60,22 @@ if(detect.mobile()==null){
            var otnhe = 100*pos.offsetY/he;
             let le_wi=$(this).find('.light').width()/2;
             let le_hi=$(this).find('.light').height()/2;
-            let lightX = (pos.offsetX-le_wi)*1.5+200;
-            let lightY = (pos.offsetY-le_hi)*1.5+200;
+            let lightX = (pos.offsetX-le_wi);
+            let lightY = (pos.offsetY-le_hi);
+            // let lightX = (pos.offsetX-le_wi)*1.5+200; мой вариант
+            // let lightY = (pos.offsetY-le_hi)*1.5+200;
             
 
             let scrollTop = $('body').scrollTop();
            let top = $(window).height()/2.5;
-        //    console.log('sc='+scrollTop+' top= '+top);
-           
-           //$(this).find('.light').css('opacity', (0.02*((otnwi+otnhe)/2)-1)+'') 
-           
-           //$(this).find('.light2').attr('style', 'top:'+(3.1*(otnhe)-240)+'px; left:'+(1.45*(otnwi)-230)+'px;')
-
-        //    $('.card_content').css('box-shadow', '0 0 15 0 white, '+(0.6*otnwi-30)+'px '+(0.6*otnhe-30)+'px 30px -34px #ffc107')
            var corY = -0.3*otnwi+15;
            var corX = -0.3*otnhe+15;
            var cor2Y= 360+(-0.3*otnwi+15);
            var cor2X=-0.3*otnhe+15;
            
-           var opacity =Math.max(Math.abs(0.066*corY),Math.abs(0.066*-corX));
-           console.log(opacity);
-           console.log('x'+corX);
-           console.log('y'+corY);
-           $(this).find('.light').attr('style', 'opacity:'+opacity+'; top:'+lightY+'px; left:'+lightX+'px;')
+        //    var opacity =Math.max(Math.abs(0.066*corY),Math.abs(0.066*-corX));
+           
+           $(this).find('.light').attr('style', 'opacity:1; top:'+lightY+'px; left:'+lightX+'px;')
 
            //            if($(this).hasClass('active')){
             
