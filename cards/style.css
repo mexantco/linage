@@ -170,6 +170,12 @@ filter: brightness(0.5);
         font-size: 12vh;
         transform: rotateX(180deg);
     }
+    #card4{
+        -webkit-mask-image: url(../assets/img/card4_2.png);
+    -webkit-mask-size: 119% 111%;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    }
     .light, .light2{
         pointer-events: none;
         /* transition: all 1s ; */
